@@ -1,0 +1,2 @@
+﻿# 用于配置zull网关请求过滤路径
+exception: /portal/,/myuser/user/findByUsername/,/myuser/user/register/,/myuser/irpt/,/myuser/user/login

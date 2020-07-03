@@ -1,0 +1,65 @@
+spring:
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  dao:
+    exceptiontranslation:
+      enabled: true
+  http:
+    encoding:
+      force: true
+      enabled: true
+      charset: UTF-8
+      force-request: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test
+      username: root
+      password: Xiao.1234
+      initial-size: 30
+      max-active: 100
+      min-idle: 25
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 1000
+      validation-query: SELECT 1 FROM DUAL
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-connect-error-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      max-evictable-idle-time-millis: 3000000
+      filters: stat,wall
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      use-global-data-source-stat: true
+      aop-patterns: com.unis.user.server.repository.*
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: /druid/*,*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico
+        enabled: true
+        session-stat-enable: true
+        session-stat-max-count: 10
+      stat-view-servlet:
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: druid
+        login-password: druid
+mybatis:
+  type-aliases-package: com.unis.test.dto
+  config-locations: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/mysql/*.xml
+  table:
+    auto: none
+  model:
+    pack: com.unis.test.entity
+  configuration:
+    jdbcTypeForNull: VARCHAR
+    callSettersOnNulls: true
+mapper:
+  not-empty: false
+  mappers: tk.mybatis.mapper.common.Mapper
+  plugin: tk.mybatis.mapper.generator.MapperPlugin
+  Mapper: tk.mybatis.mapper.common.Mapper
